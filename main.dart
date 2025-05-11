@@ -1,46 +1,23 @@
-abstract class Human {
-  void walk();
+mixin class Strong {
+  final double strengthLaevel = 1500.99;
 }
 
-enum Team { red, blue }
+mixin class quickRunner {
+  void run() {
+    print('ruunnnnnnnn');
+  }
+}
 
-enum XpLevel { low, medium, high }
+enum Team { red, blue, green }
 
-enum Name { han, saem }
-
-class Player extends Human {
-  Name name;
-  XpLevel xp;
-  Team team;
-
+class Player with Strong, quickRunner {
+  final Team team;
   Player({
-    required this.name,
-    required this.xp,
     required this.team,
   });
-
-  void sayHello() {
-    print('hello $name');
-  }
-
-  void walk() {
-    print('im walking');
-  }
-}
-
-class Coach extends Human {
-  void walk() {
-    print('im coaching walking');
-  }
 }
 
 void main() {
-  var han = Player(name: Name.han, xp: XpLevel.low, team: Team.red);
-  var potatoGift = han
-    ..name = Name.saem
-    ..xp = XpLevel.high
-    ..team = Team.blue
-    ..sayHello();
-
-  print(han.name);
+  var player = Player(team: Team.red);
+  print(player.strengthLaevel);
 }
